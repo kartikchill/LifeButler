@@ -1,0 +1,6 @@
+class: UserMode
+table: user_mode
+fields:
+  userId: int
+  mode: String
+  createdAt: DateTime

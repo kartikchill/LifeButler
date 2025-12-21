@@ -1,0 +1,9 @@
+goal:
+  - createGoal:
+  - getGoals:
+streak:
+  - updateStreak:
+task:
+  - completeTask:
+greeting:
+  - hello:

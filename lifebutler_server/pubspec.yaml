@@ -1,0 +1,15 @@
+name: lifebutler_server
+description: Starting point for a Serverpod server.
+
+environment:
+  sdk: '>=3.10.0 <4.0.0'
+
+dependencies:
+  serverpod: 3.1.1
+  
+
+dev_dependencies:
+  serverpod_cli: 3.1.1
+  serverpod_test: 3.1.1
+  test: ^1.25.5
+

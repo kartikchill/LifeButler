@@ -1,0 +1,8 @@
+class: Task
+table: task
+fields:
+  goalId: int
+  scheduledTime: DateTime
+  durationMinutes: int
+  repeatDaily: bool
+  createdAt: DateTime

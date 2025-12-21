@@ -1,0 +1,7 @@
+class: Streak
+table: streak
+fields:
+  goalId: int
+  currentStreak: int
+  bestStreak: int
+  lastCompletedDate: DateTime?

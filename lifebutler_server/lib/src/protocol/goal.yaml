@@ -1,0 +1,8 @@
+class: Goal
+table: goal
+fields:
+  userId: int
+  title: String
+  description: String?
+  isActive: bool
+  createdAt: DateTime

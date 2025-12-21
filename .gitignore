@@ -1,0 +1,27 @@
+# Dart / Flutter
+.dart_tool/
+.pub/
+build/
+.flutter-plugins
+.flutter-plugins-dependencies
+
+# Serverpod
+lifebutler_server/.dart_tool/
+lifebutler_server/.serverpod/
+lifebutler_server/.idea/
+
+# Flutter
+lifebutler_flutter/.dart_tool/
+lifebutler_flutter/build/
+lifebutler_flutter/.idea/
+
+# Node / misc
+node_modules/
+
+# Env / secrets
+.env
+config/passwords.yaml
+
+# OS
+.DS_Store
+Thumbs.db

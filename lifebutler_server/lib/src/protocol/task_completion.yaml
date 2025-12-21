@@ -1,0 +1,5 @@
+class: TaskCompletion
+table: task_completion
+fields:
+  taskId: int
+  completedAt: DateTime
