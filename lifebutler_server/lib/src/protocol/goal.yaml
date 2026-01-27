@@ -4,5 +4,20 @@ fields:
   userId: int
   title: String
   description: String?
+  affirmation: String?
   isActive: bool
   createdAt: DateTime
+  targetCount: int
+  completedCount: int
+  periodType: String
+  periodStart: DateTime
+  periodEnd: DateTime
+  lastCompletedAt: DateTime?
+  # Notification Settings
+  consistencyStyle: String? # 'flexible', 'dailyAnchor'
+  anchorTime: DateTime?
+  priority: int? # 1=High, 2=Medium, 3=Low
+  # Streak System
+  currentStreak: int?
+  longestStreak: int?
+  lastEvaluatedPeriodEnd: DateTime?

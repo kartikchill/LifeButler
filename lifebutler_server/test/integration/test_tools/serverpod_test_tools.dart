@@ -175,6 +175,12 @@ class _GoalEndpoint {
     required int userId,
     required String title,
     String? description,
+    String? affirmation,
+    required int targetCount,
+    required String periodType,
+    String? consistencyStyle,
+    DateTime? anchorTime,
+    int? priority,
   }) async {
     return _i1.callAwaitableFunctionAndHandleExceptions(() async {
       var _localUniqueSession =
@@ -191,7 +197,75 @@ class _GoalEndpoint {
             'userId': userId,
             'title': title,
             'description': description,
+            'affirmation': affirmation,
+            'targetCount': targetCount,
+            'periodType': periodType,
+            'consistencyStyle': consistencyStyle,
+            'anchorTime': anchorTime,
+            'priority': priority,
           }),
+          serializationManager: _serializationManager,
+        );
+        var _localReturnValue =
+            await (_localCallContext.method.call(
+                  _localUniqueSession,
+                  _localCallContext.arguments,
+                )
+                as _i3.Future<_i4.Goal>);
+        return _localReturnValue;
+      } finally {
+        await _localUniqueSession.close();
+      }
+    });
+  }
+
+  _i3.Future<_i4.Goal> completeGoalSession(
+    _i1.TestSessionBuilder sessionBuilder,
+    int goalId,
+  ) async {
+    return _i1.callAwaitableFunctionAndHandleExceptions(() async {
+      var _localUniqueSession =
+          (sessionBuilder as _i1.InternalTestSessionBuilder).internalBuild(
+            endpoint: 'goal',
+            method: 'completeGoalSession',
+          );
+      try {
+        var _localCallContext = await _endpointDispatch.getMethodCallContext(
+          createSessionCallback: (_) => _localUniqueSession,
+          endpointPath: 'goal',
+          methodName: 'completeGoalSession',
+          parameters: _i1.testObjectToJson({'goalId': goalId}),
+          serializationManager: _serializationManager,
+        );
+        var _localReturnValue =
+            await (_localCallContext.method.call(
+                  _localUniqueSession,
+                  _localCallContext.arguments,
+                )
+                as _i3.Future<_i4.Goal>);
+        return _localReturnValue;
+      } finally {
+        await _localUniqueSession.close();
+      }
+    });
+  }
+
+  _i3.Future<_i4.Goal> restartGoal(
+    _i1.TestSessionBuilder sessionBuilder,
+    int goalId,
+  ) async {
+    return _i1.callAwaitableFunctionAndHandleExceptions(() async {
+      var _localUniqueSession =
+          (sessionBuilder as _i1.InternalTestSessionBuilder).internalBuild(
+            endpoint: 'goal',
+            method: 'restartGoal',
+          );
+      try {
+        var _localCallContext = await _endpointDispatch.getMethodCallContext(
+          createSessionCallback: (_) => _localUniqueSession,
+          endpointPath: 'goal',
+          methodName: 'restartGoal',
+          parameters: _i1.testObjectToJson({'goalId': goalId}),
           serializationManager: _serializationManager,
         );
         var _localReturnValue =
@@ -231,6 +305,37 @@ class _GoalEndpoint {
                   _localCallContext.arguments,
                 )
                 as _i3.Future<List<_i4.Goal>>);
+        return _localReturnValue;
+      } finally {
+        await _localUniqueSession.close();
+      }
+    });
+  }
+
+  _i3.Future<bool> updateGoal(
+    _i1.TestSessionBuilder sessionBuilder,
+    _i4.Goal goal,
+  ) async {
+    return _i1.callAwaitableFunctionAndHandleExceptions(() async {
+      var _localUniqueSession =
+          (sessionBuilder as _i1.InternalTestSessionBuilder).internalBuild(
+            endpoint: 'goal',
+            method: 'updateGoal',
+          );
+      try {
+        var _localCallContext = await _endpointDispatch.getMethodCallContext(
+          createSessionCallback: (_) => _localUniqueSession,
+          endpointPath: 'goal',
+          methodName: 'updateGoal',
+          parameters: _i1.testObjectToJson({'goal': goal}),
+          serializationManager: _serializationManager,
+        );
+        var _localReturnValue =
+            await (_localCallContext.method.call(
+                  _localUniqueSession,
+                  _localCallContext.arguments,
+                )
+                as _i3.Future<bool>);
         return _localReturnValue;
       } finally {
         await _localUniqueSession.close();

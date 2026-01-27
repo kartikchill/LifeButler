@@ -1,43 +1,13 @@
 import 'package:flutter/material.dart';
-import 'config/serverpod_client.dart';
+import 'package:android_alarm_manager_plus/android_alarm_manager_plus.dart';
+import 'app.dart';
+import 'services/notification_service.dart';
+import 'services/preferences_service.dart';
 
-void main() {
-  client = createClient();
-  runApp(const MyApp());
-}
-
-class MyApp extends StatelessWidget {
-  const MyApp({super.key});
-
-  @override
-  Widget build(BuildContext context) {
-    return const MaterialApp(
-      home: HomePage(),
-    );
-  }
-}
-
-class HomePage extends StatelessWidget {
-  const HomePage({super.key});
-
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(title: const Text('LifeButler')),
-      body: Center(
-        child: ElevatedButton(
-          onPressed: () async {
-            final goal = await client.goal.createGoal(
-              userId: 1,
-              title: 'Study DSA',
-              description: 'Daily practice',
-            );
-
-            debugPrint('Created goal: ${goal.title}');
-          },
-          child: const Text('Create Goal'),
-        ),
-      ),
-    );
-  }
+void main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+  await PreferencesService().init();
+  await NotificationService().init();
+  await AndroidAlarmManager.initialize();
+  runApp(const LifeButlerApp());
 }

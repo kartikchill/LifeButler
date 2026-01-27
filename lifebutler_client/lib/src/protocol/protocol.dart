@@ -13,13 +13,15 @@
 import 'package:serverpod_client/serverpod_client.dart' as _i1;
 import 'goal.dart' as _i2;
 import 'greetings/greeting.dart' as _i3;
-import 'streak.dart' as _i4;
-import 'task.dart' as _i5;
-import 'task_completion.dart' as _i6;
-import 'user_mode.dart' as _i7;
-import 'package:lifebutler_client/src/protocol/goal.dart' as _i8;
+import 'reflection.dart' as _i4;
+import 'streak.dart' as _i5;
+import 'task.dart' as _i6;
+import 'task_completion.dart' as _i7;
+import 'user_mode.dart' as _i8;
+import 'package:lifebutler_client/src/protocol/goal.dart' as _i9;
 export 'goal.dart';
 export 'greetings/greeting.dart';
+export 'reflection.dart';
 export 'streak.dart';
 export 'task.dart';
 export 'task_completion.dart';
@@ -66,17 +68,20 @@ class Protocol extends _i1.SerializationManager {
     if (t == _i3.Greeting) {
       return _i3.Greeting.fromJson(data) as T;
     }
-    if (t == _i4.Streak) {
-      return _i4.Streak.fromJson(data) as T;
+    if (t == _i4.Reflection) {
+      return _i4.Reflection.fromJson(data) as T;
     }
-    if (t == _i5.Task) {
-      return _i5.Task.fromJson(data) as T;
+    if (t == _i5.Streak) {
+      return _i5.Streak.fromJson(data) as T;
     }
-    if (t == _i6.TaskCompletion) {
-      return _i6.TaskCompletion.fromJson(data) as T;
+    if (t == _i6.Task) {
+      return _i6.Task.fromJson(data) as T;
     }
-    if (t == _i7.UserMode) {
-      return _i7.UserMode.fromJson(data) as T;
+    if (t == _i7.TaskCompletion) {
+      return _i7.TaskCompletion.fromJson(data) as T;
+    }
+    if (t == _i8.UserMode) {
+      return _i8.UserMode.fromJson(data) as T;
     }
     if (t == _i1.getType<_i2.Goal?>()) {
       return (data != null ? _i2.Goal.fromJson(data) : null) as T;
@@ -84,20 +89,23 @@ class Protocol extends _i1.SerializationManager {
     if (t == _i1.getType<_i3.Greeting?>()) {
       return (data != null ? _i3.Greeting.fromJson(data) : null) as T;
     }
-    if (t == _i1.getType<_i4.Streak?>()) {
-      return (data != null ? _i4.Streak.fromJson(data) : null) as T;
+    if (t == _i1.getType<_i4.Reflection?>()) {
+      return (data != null ? _i4.Reflection.fromJson(data) : null) as T;
     }
-    if (t == _i1.getType<_i5.Task?>()) {
-      return (data != null ? _i5.Task.fromJson(data) : null) as T;
+    if (t == _i1.getType<_i5.Streak?>()) {
+      return (data != null ? _i5.Streak.fromJson(data) : null) as T;
     }
-    if (t == _i1.getType<_i6.TaskCompletion?>()) {
-      return (data != null ? _i6.TaskCompletion.fromJson(data) : null) as T;
+    if (t == _i1.getType<_i6.Task?>()) {
+      return (data != null ? _i6.Task.fromJson(data) : null) as T;
     }
-    if (t == _i1.getType<_i7.UserMode?>()) {
-      return (data != null ? _i7.UserMode.fromJson(data) : null) as T;
+    if (t == _i1.getType<_i7.TaskCompletion?>()) {
+      return (data != null ? _i7.TaskCompletion.fromJson(data) : null) as T;
     }
-    if (t == List<_i8.Goal>) {
-      return (data as List).map((e) => deserialize<_i8.Goal>(e)).toList() as T;
+    if (t == _i1.getType<_i8.UserMode?>()) {
+      return (data != null ? _i8.UserMode.fromJson(data) : null) as T;
+    }
+    if (t == List<_i9.Goal>) {
+      return (data as List).map((e) => deserialize<_i9.Goal>(e)).toList() as T;
     }
     return super.deserialize<T>(data, t);
   }
@@ -106,10 +114,11 @@ class Protocol extends _i1.SerializationManager {
     return switch (type) {
       _i2.Goal => 'Goal',
       _i3.Greeting => 'Greeting',
-      _i4.Streak => 'Streak',
-      _i5.Task => 'Task',
-      _i6.TaskCompletion => 'TaskCompletion',
-      _i7.UserMode => 'UserMode',
+      _i4.Reflection => 'Reflection',
+      _i5.Streak => 'Streak',
+      _i6.Task => 'Task',
+      _i7.TaskCompletion => 'TaskCompletion',
+      _i8.UserMode => 'UserMode',
       _ => null,
     };
   }
@@ -128,13 +137,15 @@ class Protocol extends _i1.SerializationManager {
         return 'Goal';
       case _i3.Greeting():
         return 'Greeting';
-      case _i4.Streak():
+      case _i4.Reflection():
+        return 'Reflection';
+      case _i5.Streak():
         return 'Streak';
-      case _i5.Task():
+      case _i6.Task():
         return 'Task';
-      case _i6.TaskCompletion():
+      case _i7.TaskCompletion():
         return 'TaskCompletion';
-      case _i7.UserMode():
+      case _i8.UserMode():
         return 'UserMode';
     }
     return null;
@@ -152,17 +163,20 @@ class Protocol extends _i1.SerializationManager {
     if (dataClassName == 'Greeting') {
       return deserialize<_i3.Greeting>(data['data']);
     }
+    if (dataClassName == 'Reflection') {
+      return deserialize<_i4.Reflection>(data['data']);
+    }
     if (dataClassName == 'Streak') {
-      return deserialize<_i4.Streak>(data['data']);
+      return deserialize<_i5.Streak>(data['data']);
     }
     if (dataClassName == 'Task') {
-      return deserialize<_i5.Task>(data['data']);
+      return deserialize<_i6.Task>(data['data']);
     }
     if (dataClassName == 'TaskCompletion') {
-      return deserialize<_i6.TaskCompletion>(data['data']);
+      return deserialize<_i7.TaskCompletion>(data['data']);
     }
     if (dataClassName == 'UserMode') {
-      return deserialize<_i7.UserMode>(data['data']);
+      return deserialize<_i8.UserMode>(data['data']);
     }
     return super.deserializeByClassName(data);
   }

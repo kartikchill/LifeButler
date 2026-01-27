@@ -1,0 +1,8 @@
+class: Reflection
+table: reflection
+fields:
+  userId: int
+  goalId: int?
+  type: int # 0=Completed, 1=Missed, 2=Weekly
+  content: String
+  createdAt: DateTime

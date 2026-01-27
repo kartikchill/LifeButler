@@ -15,6 +15,7 @@ import '../endpoints/goal_endpoint.dart' as _i2;
 import '../endpoints/streak_endpoint.dart' as _i3;
 import '../endpoints/task_endpoint.dart' as _i4;
 import '../greetings/greeting_endpoint.dart' as _i5;
+import 'package:lifebutler_server/src/generated/goal.dart' as _i6;
 
 class Endpoints extends _i1.EndpointDispatch {
   @override
@@ -67,6 +68,36 @@ class Endpoints extends _i1.EndpointDispatch {
               type: _i1.getType<String?>(),
               nullable: true,
             ),
+            'affirmation': _i1.ParameterDescription(
+              name: 'affirmation',
+              type: _i1.getType<String?>(),
+              nullable: true,
+            ),
+            'targetCount': _i1.ParameterDescription(
+              name: 'targetCount',
+              type: _i1.getType<int>(),
+              nullable: false,
+            ),
+            'periodType': _i1.ParameterDescription(
+              name: 'periodType',
+              type: _i1.getType<String>(),
+              nullable: false,
+            ),
+            'consistencyStyle': _i1.ParameterDescription(
+              name: 'consistencyStyle',
+              type: _i1.getType<String?>(),
+              nullable: true,
+            ),
+            'anchorTime': _i1.ParameterDescription(
+              name: 'anchorTime',
+              type: _i1.getType<DateTime?>(),
+              nullable: true,
+            ),
+            'priority': _i1.ParameterDescription(
+              name: 'priority',
+              type: _i1.getType<int?>(),
+              nullable: true,
+            ),
           },
           call:
               (
@@ -77,6 +108,49 @@ class Endpoints extends _i1.EndpointDispatch {
                 userId: params['userId'],
                 title: params['title'],
                 description: params['description'],
+                affirmation: params['affirmation'],
+                targetCount: params['targetCount'],
+                periodType: params['periodType'],
+                consistencyStyle: params['consistencyStyle'],
+                anchorTime: params['anchorTime'],
+                priority: params['priority'],
+              ),
+        ),
+        'completeGoalSession': _i1.MethodConnector(
+          name: 'completeGoalSession',
+          params: {
+            'goalId': _i1.ParameterDescription(
+              name: 'goalId',
+              type: _i1.getType<int>(),
+              nullable: false,
+            ),
+          },
+          call:
+              (
+                _i1.Session session,
+                Map<String, dynamic> params,
+              ) async =>
+                  (endpoints['goal'] as _i2.GoalEndpoint).completeGoalSession(
+                    session,
+                    params['goalId'],
+                  ),
+        ),
+        'restartGoal': _i1.MethodConnector(
+          name: 'restartGoal',
+          params: {
+            'goalId': _i1.ParameterDescription(
+              name: 'goalId',
+              type: _i1.getType<int>(),
+              nullable: false,
+            ),
+          },
+          call:
+              (
+                _i1.Session session,
+                Map<String, dynamic> params,
+              ) async => (endpoints['goal'] as _i2.GoalEndpoint).restartGoal(
+                session,
+                params['goalId'],
               ),
         ),
         'getGoals': _i1.MethodConnector(
@@ -95,6 +169,24 @@ class Endpoints extends _i1.EndpointDispatch {
               ) async => (endpoints['goal'] as _i2.GoalEndpoint).getGoals(
                 session,
                 params['userId'],
+              ),
+        ),
+        'updateGoal': _i1.MethodConnector(
+          name: 'updateGoal',
+          params: {
+            'goal': _i1.ParameterDescription(
+              name: 'goal',
+              type: _i1.getType<_i6.Goal>(),
+              nullable: false,
+            ),
+          },
+          call:
+              (
+                _i1.Session session,
+                Map<String, dynamic> params,
+              ) async => (endpoints['goal'] as _i2.GoalEndpoint).updateGoal(
+                session,
+                params['goal'],
               ),
         ),
       },

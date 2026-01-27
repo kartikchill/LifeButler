@@ -1,0 +1,90 @@
+{
+  "__className__": "serverpod.DatabaseMigration",
+  "actions": [
+    {
+      "__className__": "serverpod.DatabaseMigrationAction",
+      "type": "alterTable",
+      "alterTable": {
+        "__className__": "serverpod.TableMigration",
+        "name": "goal",
+        "schema": "public",
+        "addColumns": [],
+        "deleteColumns": [
+          "currentStreak",
+          "longestStreak",
+          "lastEvaluatedPeriodEnd"
+        ],
+        "modifyColumns": [],
+        "addIndexes": [],
+        "deleteIndexes": [],
+        "addForeignKeys": [],
+        "deleteForeignKeys": [],
+        "warnings": [
+          {
+            "__className__": "serverpod.DatabaseMigrationWarning",
+            "type": "columnDropped",
+            "message": "Column \"currentStreak\" of table \"goal\" will be dropped.",
+            "table": "goal",
+            "columns": [
+              "currentStreak"
+            ],
+            "destrucive": true
+          },
+          {
+            "__className__": "serverpod.DatabaseMigrationWarning",
+            "type": "columnDropped",
+            "message": "Column \"longestStreak\" of table \"goal\" will be dropped.",
+            "table": "goal",
+            "columns": [
+              "longestStreak"
+            ],
+            "destrucive": true
+          },
+          {
+            "__className__": "serverpod.DatabaseMigrationWarning",
+            "type": "columnDropped",
+            "message": "Column \"lastEvaluatedPeriodEnd\" of table \"goal\" will be dropped.",
+            "table": "goal",
+            "columns": [
+              "lastEvaluatedPeriodEnd"
+            ],
+            "destrucive": true
+          }
+        ]
+      }
+    }
+  ],
+  "warnings": [
+    {
+      "__className__": "serverpod.DatabaseMigrationWarning",
+      "type": "columnDropped",
+      "message": "Column \"currentStreak\" of table \"goal\" will be dropped.",
+      "table": "goal",
+      "columns": [
+        "currentStreak"
+      ],
+      "destrucive": true
+    },
+    {
+      "__className__": "serverpod.DatabaseMigrationWarning",
+      "type": "columnDropped",
+      "message": "Column \"longestStreak\" of table \"goal\" will be dropped.",
+      "table": "goal",
+      "columns": [
+        "longestStreak"
+      ],
+      "destrucive": true
+    },
+    {
+      "__className__": "serverpod.DatabaseMigrationWarning",
+      "type": "columnDropped",
+      "message": "Column \"lastEvaluatedPeriodEnd\" of table \"goal\" will be dropped.",
+      "table": "goal",
+      "columns": [
+        "lastEvaluatedPeriodEnd"
+      ],
+      "destrucive": true
+    }
+  ],
+  "migrationApiVersion": 1
+}

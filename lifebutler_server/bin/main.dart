@@ -1,7 +1,13 @@
-import 'package:lifebutler_server/server.dart';
+import 'package:serverpod/serverpod.dart';
+import 'package:lifebutler_server/src/generated/protocol.dart';
+import 'package:lifebutler_server/src/generated/endpoints.dart';
 
-/// This is the starting point for your Serverpod server. Typically, there is
-/// no need to modify this file.
-void main(List<String> args) {
-  run(args);
+void main(List<String> args) async {
+  final pod = Serverpod(
+    args,
+    Protocol(),
+    Endpoints(),
+  );
+
+  await pod.start();
 }

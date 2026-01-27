@@ -1,3 +1,5 @@
+version: "3.9"
+
 services:
   postgres:
     image: pgvector/pgvector:pg16
@@ -17,14 +19,15 @@ services:
     command: redis-server --requirepass pSkRMj-wIQOpQ-3NOxQPBYyE6uzDphxa
 
   server:
-    build: .
+    build:
+      context: .
     depends_on:
       - postgres
       - redis
     ports:
+      - "8080:8080"
+      - "8081:8081"
       - "8082:8082"
-    volumes:
-      - .:/app
     environment:
       DATABASE_HOST: postgres
       DATABASE_PORT: 5432
@@ -34,5 +37,10 @@ services:
       REDIS_HOST: redis
       REDIS_PORT: 6379
       REDIS_PASSWORD: pSkRMj-wIQOpQ-3NOxQPBYyE6uzDphxa
+    command:
+      - dart
+      - bin/main.dart
+      - --apply-migrations
+
 volumes:
   lifebutler_data:

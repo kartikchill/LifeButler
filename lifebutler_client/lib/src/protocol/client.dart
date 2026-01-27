@@ -28,6 +28,12 @@ class EndpointGoal extends _i1.EndpointRef {
     required int userId,
     required String title,
     String? description,
+    String? affirmation,
+    required int targetCount,
+    required String periodType,
+    String? consistencyStyle,
+    DateTime? anchorTime,
+    int? priority,
   }) => caller.callServerEndpoint<_i3.Goal>(
     'goal',
     'createGoal',
@@ -35,8 +41,28 @@ class EndpointGoal extends _i1.EndpointRef {
       'userId': userId,
       'title': title,
       'description': description,
+      'affirmation': affirmation,
+      'targetCount': targetCount,
+      'periodType': periodType,
+      'consistencyStyle': consistencyStyle,
+      'anchorTime': anchorTime,
+      'priority': priority,
     },
   );
+
+  _i2.Future<_i3.Goal> completeGoalSession(int goalId) =>
+      caller.callServerEndpoint<_i3.Goal>(
+        'goal',
+        'completeGoalSession',
+        {'goalId': goalId},
+      );
+
+  _i2.Future<_i3.Goal> restartGoal(int goalId) =>
+      caller.callServerEndpoint<_i3.Goal>(
+        'goal',
+        'restartGoal',
+        {'goalId': goalId},
+      );
 
   _i2.Future<List<_i3.Goal>> getGoals(int userId) =>
       caller.callServerEndpoint<List<_i3.Goal>>(
@@ -44,6 +70,12 @@ class EndpointGoal extends _i1.EndpointRef {
         'getGoals',
         {'userId': userId},
       );
+
+  _i2.Future<bool> updateGoal(_i3.Goal goal) => caller.callServerEndpoint<bool>(
+    'goal',
+    'updateGoal',
+    {'goal': goal},
+  );
 }
 
 /// {@category Endpoint}

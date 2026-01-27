@@ -1,6 +1,9 @@
 goal:
   - createGoal:
+  - completeGoalSession:
+  - restartGoal:
   - getGoals:
+  - updateGoal:
 streak:
   - updateStreak:
 task:
