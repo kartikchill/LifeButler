@@ -66,9 +66,8 @@ class GoalEndpoint extends Endpoint {
       throw Exception('Challenge has expired. Start a new one!');
     }
     
-    if (goal.completedCount >= goal.targetCount) {
-       throw Exception('Goal target reached. Good job!');
-    }
+    // Constraint removed: Allow over-completion (e.g. 11/10)
+    // if (goal.completedCount >= goal.targetCount) { ... }
     
     // Cooldown Validation (12 hours)
     if (!isFirstCompletion && goal.lastCompletedAt != null) {
